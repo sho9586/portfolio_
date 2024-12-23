@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>お知らせ情報表示</title>
+</head>
+<body>
+    <h1>お知らせ情報表示</h1>
+    <table border="1">
+		<thead>
+		        <tr>
+		            <th>登録日時</th>
+		            <th>最終更新日時</th>
+		            <th>お知らせ内容</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr th:each="tmp : ${noticeLists}">
+					<td th:text="${#temporals.format(tmp.createdAt, 'yyyy-MM-dd HH:mm:ss')}">Work Start</td>
+					<td th:text="${#temporals.format(tmp.updatedAt, 'yyyy-MM-dd HH:mm:ss')}">Work End</td>
+		            <td th:text="${tmp.content}">User ID</td>
+		        </tr>
+		    </tbody>
+    </table>
+	<h1＞>お知らせ登録</h1＞>
+	<form action="/login/action" method="post">
+		<table border="1">
+				<thead>
+				        <tr>
+				            <th>グループID</th>
+				            <th>お知らせ内容</th>
+				        </tr>						
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" name="groupId" th:value="${groupId}"></td>
+						<td><input type="text" name="osirase2" ></td>	
+					</tr>
+				</tbody>
+		</table>	
+		<button type="submit">登録</button>
+	</form>	
+</body>
+</html>

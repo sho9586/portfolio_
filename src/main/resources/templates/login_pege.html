@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>勤怠検索</title>
+</head>
+<body>
+    <h1>勤怠検索</h1>
+    
+    <form action="/login/action" method="post">
+        <label for="userId">ユーザーID:</label>
+        <input type="text" name="userId" pattern="[A-Za-z0-9]+" min="1" max="20" required>
+        <span>英数字のみ</span><br>
+
+        <label for="password">パスワード (1-20):</label>
+        <input type="password" name="password" min="1" max="20" required><br>
+
+        <button type="submit">ログイン</button>
+    </form>
+
+    <!-- バリデーションエラーの表示 -->
+    <div th:if="${validationErrors}">
+        <ul>
+            <li th:each="error : ${validationErrors}" th:text="${error.defaultMessage}"></li>
+        </ul>
+    </div>
+	<!-- ログインエラーのメッセージ表示 -->
+	<div th:if="${message}" class="alert alert-info">
+	    <p th:text="${message}"></p>
+	</div>
+
+</body>
+</html>
