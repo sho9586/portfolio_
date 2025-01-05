@@ -41,7 +41,7 @@ public class LoginController {
             
             String loginResult = loginService.doLogin(form.getUserId(), form.getPassword());
             
-        if(loginResult.isEmpty()) {
+        if(loginResult == null) {
         	//ログインに失敗した場合、ログインに失敗したメッセージを設定し、ログイン画面に返す
         	model.addAttribute("message","ユーザーIDまたはパスワードが異なります。");
             return "login_pege";     
@@ -77,6 +77,6 @@ public String postNotice(@ModelAttribute NoticePostForm osirase2) {
 	 loginService.saveNotice(noticeEntity);
 	
 	//ログイン画面に戻す
-	return "login_page";
+	return "login_pege";
     }
 }
