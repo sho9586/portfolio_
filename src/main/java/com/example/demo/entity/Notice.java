@@ -31,14 +31,17 @@ public class Notice {
 	@Column(name= "content")
 	private String content;	
 	
-	@Column(name= "created_at")
-	private LocalDateTime createdAt;
+	//inserttableとupdatetableにfalseを設定して、INSERTやUPDATE時にクエリにデータが含まれないようにする
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt; //作成日時
+    
+    @Column(name = "updated_at", insertable = false, updatable = false)
+    private LocalDateTime updatedAt; //更新日時
 	
-	@Column(name= "updated_at")
-	private LocalDateTime updatedAt;
 	
 	//デフォルトコンストラクタ（無いとエラーになるので追加する。）
 	public Notice(){
+		
 	}
 	
 	//NoticePostForm（お知らせ登録フォーム）からお知らせEntityを起こす。
